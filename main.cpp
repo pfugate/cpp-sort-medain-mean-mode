@@ -3,23 +3,21 @@
 
 using namespace std;
 
-vector<int> myvectorbag;
+vector<int> inputVector;
 int n, median, mode;
-int average = 0;
-int modeCount = 1;
-int currentTarget = 0;
-int currentCount = 1;
+int average, currentModeTarget = 0;
+int modeCount, currentModeCount = 1;
 bool multiModal = true;
 bool quit = false;
 
 int main() {
-
+    cout << "You are about to enter the... Mean Median and Mode ZONE!!" << endl;
     while(!quit) {
-        cout << "Please enter a number (anything but a number exits): ";
+        cout << "Please enter a number (anything but a number starts computation): ";
         cin >> n;
 
         if (cin.good()) {
-            myvectorbag.push_back(n);
+            inputVector.push_back(n);
         }
         else {
             quit = true;
@@ -27,36 +25,36 @@ int main() {
         }
     }
 
-    sort(myvectorbag.begin(), myvectorbag.end());
+    sort(inputVector.begin(), inputVector.end());
     cout << "Your awesome sorted vector:";
-    for(vector<int>::iterator it = myvectorbag.begin(); it != myvectorbag.end(); it++) {
+    for(vector<int>::iterator it = inputVector.begin(); it != inputVector.end(); it++) {
         cout << ' ' << *it;
         average = average + *it;
         auto nxt = next(it);
         if(*it == *nxt) {
-            currentCount++;
-            currentTarget = *it;
-            if(currentCount == modeCount) {
+            currentModeCount++;
+            currentModeTarget = *it;
+            if(currentModeCount == modeCount) {
                 multiModal = true;
             }
-            else if(currentCount > modeCount) {
-                modeCount = currentCount;
-                mode = currentTarget;
+            else if(currentModeCount > modeCount) {
+                modeCount = currentModeCount;
+                mode = currentModeTarget;
                 multiModal = false;
             }
         }
         else {
-            currentCount = 1;
-            currentTarget = *it;
+            currentModeCount = 1;
+            currentModeTarget = *it;
         }
     }
-    if (myvectorbag.size() % 2 == 0) {
-        median = (myvectorbag.at(myvectorbag.size()/2) + myvectorbag.at((myvectorbag.size()/2)-1))/2;
+    if (inputVector.size() % 2 == 0) {
+        median = (inputVector.at(inputVector.size()/2) + inputVector.at((inputVector.size()/2)-1))/2;
     }
     else {
-        median = myvectorbag.at(myvectorbag.size()/2);
+        median = inputVector.at(inputVector.size()/2);
     }
-    cout << endl << endl << "MEAN: " << average/myvectorbag.size() << endl;
+    cout << endl << endl << "MEAN: " << average/inputVector.size() << endl;
     cout << "MEDIAN: " << median << endl;
     if(multiModal) {
         cout << "MODE: Multi-Modal";

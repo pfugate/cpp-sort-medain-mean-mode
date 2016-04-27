@@ -1,6 +1,6 @@
 # Fun with Vectors
 
-1. Sortin
-2. Meanin'
-3. Medianin'
-4. Modein'
+1. Sort'n
+2. Mean'n
+3. Median'n
+4. Mode'n
