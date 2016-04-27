@@ -47,6 +47,11 @@ int main() {
             currentModeCount = 1;
             currentModeTarget = *it;
         }
+
+    }
+    if(inputVector.size() < 2) {
+        mode = currentModeTarget;
+        multiModal = false;
     }
     if (inputVector.size() % 2 == 0) {
         median = (inputVector.at(inputVector.size()/2) + inputVector.at((inputVector.size()/2)-1))/2;
