@@ -31,21 +31,23 @@ int main() {
             cout << ' ' << *it;
             average = average + *it;
             auto nxt = next(it);
-            if (*it == *nxt) {
-                currentModeCount++;
-                currentModeTarget = *it;
-                if (currentModeCount == modeCount) {
-                    multiModal = true;
+            if (nxt != inputVector.end()) {
+                if (*it == *nxt) {
+                    currentModeCount++;
+                    currentModeTarget = *it;
+                    if (currentModeCount == modeCount) {
+                        multiModal = true;
+                    }
+                    else if (currentModeCount > modeCount) {
+                        modeCount = currentModeCount;
+                        mode = currentModeTarget;
+                        multiModal = false;
+                    }
                 }
-                else if (currentModeCount > modeCount) {
-                    modeCount = currentModeCount;
-                    mode = currentModeTarget;
-                    multiModal = false;
+                else {
+                    currentModeCount = 1;
+                    currentModeTarget = *it;
                 }
-            }
-            else {
-                currentModeCount = 1;
-                currentModeTarget = *it;
             }
 
         }
