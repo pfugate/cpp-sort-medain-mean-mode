@@ -71,7 +71,7 @@ int main() {
         }
     }
     else {
-        cout << "Umm I need numbers to do my thing..." << endl;
+        cout << "Umm, I need numbers to do my thing..." << endl;
     }
     return 0;
 }
